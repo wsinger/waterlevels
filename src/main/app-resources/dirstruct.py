@@ -13,6 +13,6 @@ pathlist = ['./preprocessing',
 	    './level/resources/inputs/PIS/L2',
 	    './level/resources/outputs']
 
-for path in pathlist
+for path in pathlist:
 	if not os.path.exists(path):
 		os.makedirs(path)
