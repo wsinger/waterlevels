@@ -1,12 +1,29 @@
-
 <?xml version="1.0" encoding="us-ascii"?>
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="beam_arithm">
+<application id="water_level_service">
     <jobTemplates>
-      
-      
+
+	<!-- Lake level script job template -->
+	<jobTemplate id="level">
+		<streamingExecutable>/application/level/run</streamingExecutable>
+		<defaultParameters>
+			<parameter id="startdate" title="Start date" type="opensearch" target="time:start">2010-01-01</parameter>
+			<parameter id="enddate" title="End date" type="opensearch" target="time:end">2016-01-01</parameter>
+			<parameter id="minpoints" title="minimum datapoints" abstract="The minimum number of points for a track to be considered">2</parameter>
+			<parameter id="maxstderror" title="maximum error" abstact="The maximum standard deviation within a track before it is discounted (m)">1.0</parameter>
+			<parameter id="plotname">kainji</parameter>
+		</defaultParameters>
+	</jobTemplate>
     </jobTemplates>
-    <workflow id="flood-map-extent" title="Example of Flood Map extent service " abstract="This service generates a flood map extent result from a pair of Sentinel-1 images">
-     
+
+    <workflow id="water-levels" title="Example of water level service" abstract="This service generates water level data for rivers and lakes using alitmetry data">
+	<workflowVersion>1.0</workflowVersion>
+
+	<node id="level_node">
+		<job id="level">
+		
+		</job>
+	</node>
+
     </workflow>
 </application>
   
